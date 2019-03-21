@@ -6,6 +6,8 @@ import Button from './components/Button';
 import update from 'immutability-helper';
 //https://github.com/kolodny/immutability-helper
 import math from 'mathjs';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 class App extends React.Component {
   constructor() {
@@ -52,7 +54,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="app">
+        <Header name="React Calculator"/>
+        <div className="calculator">
           {/* The Display component takes the state.operations to display input and result */}
           <Display data={this.state.operations}/>
           <Buttons>
@@ -75,20 +78,24 @@ class App extends React.Component {
               <Button onClick={this.handleClick} label="=" value="equal" />
             </div>
             <div className="column">
+              <Button onClick={this.handleClick} label="C" value="clear" />
               <Button onClick={this.handleClick} label="/" value="/" />
               <Button onClick={this.handleClick} label="*" value="*" />
-              <Button onClick={this.handleClick} label="+" value="+" />
               <Button onClick={this.handleClick} label="-" value="-" />
-            </div>
-            <div className="column">
-              <Button onClick={this.handleClick} label="C" value="clear" />
+              <Button onClick={this.handleClick} label="+" value="+" />
             </div>
             </Buttons>
         </div>
+        <Footer
+          author="Marina Fróes A. Costa"
+          contact={<a href="https://www.linkedin.com/in/marina-froes-a-costa/" target="_blank" >LinkedIn</a>}
+          message={<a href="hackernoon.com" target="_blank">Based on a Hackernoon tutorial</a>}
+        />
       </div>
     )
   }
 }
+//Create a simple calculator app in React – Hacker Noon
 
 // TODO: There are a few pitfalls though, the expression has to be valid. Something like 2*/5 will crash the app. Expression 2.4.5 + 1 will also crash the app. This is a logical side (pure JavaScript logic) of the app and has nothing to do with the react.
 // It can be solved by having conditional statements in the handleClick before updating the operations with newOperations to check invalid operators(2 * /) or a decimal (.). 
