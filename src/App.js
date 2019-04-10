@@ -13,6 +13,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = { operations: [] };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = e => {
